@@ -2,38 +2,30 @@
 
 #include <tyga/ActorDelegate.hpp>
 
-class Camera : public tyga::ActorDelegate
-{
-public:
+class Camera : public tyga::ActorDelegate {
+	public:
 
-    Camera();
+		Camera();
 
-    void
-    setHeadingAngle(float radians);
+		void setHeadingAngle(float radians);
 
-    void
-    setHeadingSpeed(float speed);
+		void setHeadingSpeed(float speed);
 
-    void
-    setPanDistance(float distance);
+		void setPanDistance(float distance);
 
-    void
-    setPanSpeed(float speed);
+		void setPanSpeed(float speed);
 
-private:
+	private:
 
-    virtual void
-    actorDidEnterWorld(std::shared_ptr<tyga::Actor> actor) override;
+		virtual void actorDidEnterWorld(std::shared_ptr<tyga::Actor> actor) override;
 
-    virtual void
-    actorWillLeaveWorld(std::shared_ptr<tyga::Actor> actor) override;
+		virtual void actorWillLeaveWorld(std::shared_ptr<tyga::Actor> actor) override;
 
-    virtual void
-    actorClockTick(std::shared_ptr<tyga::Actor> actor) override;
+		virtual void actorClockTick(std::shared_ptr<tyga::Actor> actor) override;
 
-    std::shared_ptr<tyga::Actor> camera_actor_;
-    float heading_angle_;
-    float heading_speed_;
-    float pan_distance_;
-    float pan_speed_;
+		std::shared_ptr<tyga::Actor> camera_actor_;
+		float heading_angle_;
+		float heading_speed_;
+		float pan_distance_;
+		float pan_speed_;
 };

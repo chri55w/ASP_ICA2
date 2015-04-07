@@ -9,8 +9,7 @@
 //namespace your_name_here
 //{
 
-struct PhysicsObject : public tyga::ActorComponent
-{
+struct PhysicsObject : public tyga::ActorComponent {
     tyga::Vector3 position() const;
 
     tyga::Vector3 velocity;
@@ -22,22 +21,19 @@ struct PhysicsObject : public tyga::ActorComponent
     PhysicsObject();
 };
 
-struct PhysicsPlane : public PhysicsObject
-{
+struct PhysicsPlane : public PhysicsObject {
     tyga::Vector3 normal() const;
 
     PhysicsPlane();
 };
 
-struct PhysicsSphere : public PhysicsObject
-{
+struct PhysicsSphere : public PhysicsObject {
     float radius;
 
     PhysicsSphere();
 };
 
-struct PhysicsBox : public PhysicsObject
-{
+struct PhysicsBox : public PhysicsObject {
     tyga::Vector3 U() const;
 
     tyga::Vector3 V() const;
@@ -47,46 +43,41 @@ struct PhysicsBox : public PhysicsObject
     PhysicsBox();
 };
 
-class MyPhysicsCentre : public tyga::RunloopTaskProtocol
-{
-public:
+class MyPhysicsCentre : public tyga::RunloopTaskProtocol {
 
-    static std::shared_ptr<MyPhysicsCentre>
-    defaultCentre();
+	public:
 
-    MyPhysicsCentre();
+	    static std::shared_ptr<MyPhysicsCentre>
+		defaultCentre();
 
-    ~MyPhysicsCentre();
+		MyPhysicsCentre();
 
-    std::shared_ptr<PhysicsPlane>
-    newPlane();
+		~MyPhysicsCentre();
 
-    std::shared_ptr<PhysicsSphere>
-    newSphere();
+		std::shared_ptr<PhysicsPlane>
+		newPlane();
 
-    std::shared_ptr<PhysicsBox>
-    newBox();
+		std::shared_ptr<PhysicsSphere>
+		newSphere();
 
-private:
+		std::shared_ptr<PhysicsBox>
+		newBox();
 
-    void
-    pruneDeadObjects();
+	private:
 
-    void
-    runloopWillBegin() override;
+	    void pruneDeadObjects();
 
-    void
-    runloopExecuteTask() override;
+		void runloopWillBegin() override;
 
-    void
-    runloopDidEnd() override;
+	    void runloopExecuteTask() override;
 
-    static std::shared_ptr<MyPhysicsCentre> default_centre_;
+		void runloopDidEnd() override;
 
-    std::list<std::weak_ptr<PhysicsPlane>> planes_;
-    std::list<std::weak_ptr<PhysicsSphere>> spheres_;
-    std::list<std::weak_ptr<PhysicsBox>> boxes_;
+		static std::shared_ptr<MyPhysicsCentre> default_centre_;
 
+		std::list<std::weak_ptr<PhysicsPlane>> planes_;
+		std::list<std::weak_ptr<PhysicsSphere>> spheres_;
+		std::list<std::weak_ptr<PhysicsBox>> boxes_;
 };
 
 //} // end namespace

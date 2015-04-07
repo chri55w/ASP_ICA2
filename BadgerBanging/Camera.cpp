@@ -8,9 +8,7 @@
 #include <algorithm>
 
 
-Camera::
-Camera()
-{
+Camera::Camera() {
     heading_angle_ = 2;
     heading_speed_ = 0;
     pan_distance_ = 5;
@@ -25,49 +23,35 @@ Camera()
     camera_actor_->attachComponent(camera);
 }
 
-void Camera::
-setHeadingAngle(float radians)
-{
+void Camera::setHeadingAngle(float radians) {
     heading_angle_ = radians;
 }
 
-void Camera::
-setHeadingSpeed(float spd)
-{
+void Camera::setHeadingSpeed(float spd) {
     heading_speed_ = spd;
 }
 
-void Camera::
-setPanDistance(float distance)
-{
+void Camera::setPanDistance(float distance) {
     pan_distance_ = std::max(0.f, distance);
 }
 
-void Camera::
-setPanSpeed(float speed)
-{
+void Camera::setPanSpeed(float speed) {
     pan_speed_ = speed;
 }
 
-void Camera::
-actorDidEnterWorld(std::shared_ptr<tyga::Actor> actor)
-{
+void Camera::actorDidEnterWorld(std::shared_ptr<tyga::Actor> actor) {
     auto world = tyga::ActorWorld::defaultWorld();
 
     world->addActor(camera_actor_);
 }
 
-void Camera::
-actorWillLeaveWorld(std::shared_ptr<tyga::Actor> actor)
-{
+void Camera::actorWillLeaveWorld(std::shared_ptr<tyga::Actor> actor) {
     auto world = tyga::ActorWorld::defaultWorld();
 
     world->removeActor(camera_actor_);
 }
 
-void Camera::
-actorClockTick(std::shared_ptr<tyga::Actor> actor)
-{
+void Camera::actorClockTick(std::shared_ptr<tyga::Actor> actor) {
     const float time = tyga::BasicWorldClock::CurrentTime();
     const float delta_time = tyga::BasicWorldClock::CurrentTickInterval();
 

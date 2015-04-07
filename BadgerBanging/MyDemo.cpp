@@ -15,19 +15,12 @@
 const tyga::Vector3 MyDemo::MIN_BOUND = tyga::Vector3(-20, 0.3f, -10);
 const tyga::Vector3 MyDemo::MAX_BOUND = tyga::Vector3(20, 1.5f, 10);
 
-MyDemo::
-MyDemo()
-{
+MyDemo::MyDemo() {
     camera_mode_ = kCameraStatic;
     trigger_time_ = std::numeric_limits<float>::max();
 }
 
-void MyDemo::
-applicationWindowWillInit(int& width,
-                          int& height,
-                          int& sample_count,
-                          bool& windowed)
-{
+void MyDemo::applicationWindowWillInit(int& width, int& height, int& sample_count, bool& windowed) {
     width = 1024;
     height = 576;
 
@@ -40,9 +33,7 @@ applicationWindowWillInit(int& width,
     std::cout << "Press spacebar to prematurely bang the toys." << std::endl << std::endl;
 }
 
-void MyDemo::
-applicationDidStart()
-{
+void MyDemo::applicationDidStart() {
     renderer_ = std::make_shared<tyga::BasicRenderer>();
     tyga::Application::setWindowViewDelegate(renderer_);
 
@@ -90,9 +81,7 @@ applicationDidStart()
 
 }
 
-void MyDemo::
-applicationRunloopWillBegin()
-{
+void MyDemo::applicationRunloopWillBegin() {
     tyga::BasicWorldClock::update();
 
     const float time = tyga::BasicWorldClock::CurrentTime();
@@ -120,57 +109,37 @@ applicationRunloopWillBegin()
 
 }
 
-void MyDemo::
-applicationRunloopDidEnd()
-{
+void MyDemo::applicationRunloopDidEnd() {
     renderer_->setGraphicsScene(tyga::GraphicsCentre::defaultCentre()->scene());
 }
 
-void MyDemo::
-applicationWillStop()
-{
+void MyDemo::applicationWillStop() {
+
 }
 
-void MyDemo::
-applicationInputStateChanged(
-    std::shared_ptr<tyga::InputStateProtocol> input_state)
-{
-    if (input_state->gamepadPresent(0))
-    {
-        if (input_state->gamepadButtonDownCount(
-            0, tyga::kInputGamepadButtonRightShoulder))
-        {
-            float camera_heading_speed = input_state
-                ->gamepadAxisPosition(0, tyga::kInputGamepadAxisRightThumbX);
+void MyDemo::applicationInputStateChanged(std::shared_ptr<tyga::InputStateProtocol> input_state) {
+    if (input_state->gamepadPresent(0)) {
+        if (input_state->gamepadButtonDownCount(0, tyga::kInputGamepadButtonRightShoulder)) {
+            float camera_heading_speed = input_state->gamepadAxisPosition(0, tyga::kInputGamepadAxisRightThumbX);
             camera_->setHeadingSpeed(camera_heading_speed);
-            float camera_pan_speed = -input_state
-                ->gamepadAxisPosition(0, tyga::kInputGamepadAxisLeftThumbY);
+            float camera_pan_speed = -input_state->gamepadAxisPosition(0, tyga::kInputGamepadAxisLeftThumbY);
             camera_->setPanSpeed(camera_pan_speed);
-        }
-        else
-        {
-            float badger_speed = input_state
-                ->gamepadAxisPosition(0, tyga::kInputGamepadAxisLeftThumbY);
+        } else {
+            float badger_speed = input_state->gamepadAxisPosition(0, tyga::kInputGamepadAxisLeftThumbY);
             badger_->setSpeed(badger_speed);
-            float badger_turn = input_state
-                ->gamepadAxisPosition(0, tyga::kInputGamepadAxisRightThumbX);
+            float badger_turn = input_state->gamepadAxisPosition(0, tyga::kInputGamepadAxisRightThumbX);
             badger_->setTurnAngle(badger_turn);
         }
-    }
-    else
-    {
-        float badger_speed = input_state
-            ->keyboardAxisPosition(tyga::kInputKeyboardAxisUpDown);
+    } else {
+        float badger_speed = input_state->keyboardAxisPosition(tyga::kInputKeyboardAxisUpDown);
         badger_->setSpeed(badger_speed);
-        float badger_turn = input_state
-            ->keyboardAxisPosition(tyga::kInputKeyboardAxisLeftRight);
+        float badger_turn = input_state->keyboardAxisPosition(tyga::kInputKeyboardAxisLeftRight);
         badger_->setTurnAngle(badger_turn);
     }
 
     if (input_state->keyboardKeyDownCount(tyga::kInputKeyF2) == 1) {
         camera_mode_ = CameraMode((camera_mode_+1) % kCameraMAX);
-        switch (camera_mode_)
-        {
+        switch (camera_mode_) {
         case MyDemo::kCameraStatic:
             camera_->setHeadingAngle(0.2f);
             camera_->setPanDistance(30);
@@ -191,9 +160,7 @@ applicationInputStateChanged(
     }
 }
 
-void MyDemo::
-resetToys()
-{
+void MyDemo::resetToys() {
     std::uniform_int_distribution<int> n_rand(10, 50);
     std::uniform_real_distribution<float> x_rand(MIN_BOUND.x, MAX_BOUND.x);
     std::uniform_real_distribution<float> y_rand(MIN_BOUND.y, MAX_BOUND.y);
@@ -212,9 +179,7 @@ resetToys()
     }
 }
 
-void MyDemo::
-triggerToys()
-{
+void MyDemo::triggerToys() {
     std::uniform_real_distribution<float> x_rand(-0.2f, 0.2f);
     std::uniform_real_distribution<float> z_rand(-0.2f, 0.2f);
 

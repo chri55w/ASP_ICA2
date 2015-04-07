@@ -3,32 +3,25 @@
 #include <tyga/ActorDelegate.hpp>
 #include "MyPhysicsCentre.hpp"
 
-class ToyMine : public tyga::ActorDelegate
-{
-public:
+class ToyMine : public tyga::ActorDelegate {
+	public:
 
-    ToyMine();
+		ToyMine();
 
-    void
-    reset(tyga::Vector3 position, float mass);
+		void reset(tyga::Vector3 position, float mass);
 
-    void
-    applyForce(tyga::Vector3 force);
+		void applyForce(tyga::Vector3 force);
 
-    void
-    trigger();
+		void trigger();
 
-private:
+	private:
 
-    virtual void
-    actorDidEnterWorld(std::shared_ptr<tyga::Actor> actor) override;
+		virtual void actorDidEnterWorld(std::shared_ptr<tyga::Actor> actor) override;
 
-    virtual void
-    actorWillLeaveWorld(std::shared_ptr<tyga::Actor> actor) override;
+		virtual void actorWillLeaveWorld(std::shared_ptr<tyga::Actor> actor) override;
 
-    virtual void
-    actorClockTick(std::shared_ptr<tyga::Actor> actor) override;
+		virtual void actorClockTick(std::shared_ptr<tyga::Actor> actor) override;
 
-    std::shared_ptr<PhysicsSphere> physics_model_;
+		std::shared_ptr<PhysicsSphere> physics_model_;
 
 };

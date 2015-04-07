@@ -7,14 +7,10 @@
 #include <tyga/GraphicsCentre.hpp>
 #include <tyga/Log.hpp>
 
-ToyMine::
-ToyMine()
-{
+ToyMine::ToyMine() {
 }
 
-void ToyMine::
-reset(tyga::Vector3 position, float mass)
-{
+void ToyMine::reset(tyga::Vector3 position, float mass) {
     // NB: this method should not need changing
 
     const auto& p = position;
@@ -26,25 +22,19 @@ reset(tyga::Vector3 position, float mass)
     physics_model_->mass = mass;
 }
 
-void ToyMine::
-applyForce(tyga::Vector3 force)
-{
+void ToyMine::applyForce(tyga::Vector3 force) {
     // NB: this method should not need changing
 
     physics_model_->force += force;
     physics_model_->velocity = tyga::Vector3(0,0,0);
 }
 
-void ToyMine::
-trigger()
-{
+void ToyMine::trigger() {
     // TODO: code to begin the explosion animation/simulation
     tyga::debugLog("ToyMine::trigger: toy should explode now");
 }
 
-void ToyMine::
-actorDidEnterWorld(std::shared_ptr<tyga::Actor> actor)
-{
+void ToyMine::actorDidEnterWorld(std::shared_ptr<tyga::Actor> actor) {
     auto world = tyga::ActorWorld::defaultWorld();
     auto graphics = tyga::GraphicsCentre::defaultCentre();
     auto physics = MyPhysicsCentre::defaultCentre();
@@ -66,18 +56,15 @@ actorDidEnterWorld(std::shared_ptr<tyga::Actor> actor)
     actor->attachComponent(graphics_model);
     actor->attachComponent(physics_model);
     world->addActor(actor);
+
 }
 
-void ToyMine::
-actorWillLeaveWorld(std::shared_ptr<tyga::Actor> actor)
-{
+void ToyMine::actorWillLeaveWorld(std::shared_ptr<tyga::Actor> actor) {
+
 }
 
-void ToyMine::
-actorClockTick(std::shared_ptr<tyga::Actor> actor)
-{
-
-
+void ToyMine::actorClockTick(std::shared_ptr<tyga::Actor> actor) {
     // HINT: once the toy has exploded and there is no visible traces left
     //       then call this->removeFromWorld() to free the memory
+	applyForce(tyga::Vector3(0, 9.81, 0));
 }
