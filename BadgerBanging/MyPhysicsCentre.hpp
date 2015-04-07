@@ -78,6 +78,8 @@ class MyPhysicsCentre : public tyga::RunloopTaskProtocol {
 		std::list<std::weak_ptr<PhysicsPlane>> planes_;
 		std::list<std::weak_ptr<PhysicsSphere>> spheres_;
 		std::list<std::weak_ptr<PhysicsBox>> boxes_;
+
+		tyga::Vector3 gravity = tyga::Vector3(0, -9.81, 0);
 };
 
 //} // end namespace

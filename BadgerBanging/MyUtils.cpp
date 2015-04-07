@@ -8,10 +8,9 @@
 namespace Util {
 
 	tyga::Matrix4x4 Util::translate(float x, float y, float z) {
-		// TODO: this function doesn't work correctly
 		return tyga::Matrix4x4(		1,       0,       0,       0,
 									0,       1,       0,       0,
 									0,       0,       1,       0,
-									0,       0,       0,       1);
+									x,       y,       z,       1);
 	}
 }

@@ -154,10 +154,27 @@ void MyPhysicsCentre::runloopExecuteTask() {
         if (actor == nullptr) 
 			continue;
 
+
+		tyga::Vector3 pos = model->position();
+
+		model->velocity += (model->force * model->mass) * delta_time;
+
+		model->velocity += gravity * delta_time;
+
+		pos += model->velocity * delta_time;
+
+		tyga::Matrix4x4 setPosition = tyga::Matrix4x4(
+			1, 0, 0, 0,
+			0, 1, 0, 0,
+			0, 0, 1, 0,
+			pos.x, pos.y, pos.z, 1);
+
         // TODO: perform the physics (kinetic motion) update
 		
 
         // TODO: update the actor's transformation
+
+		actor->setTransformation(Util::translate(pos.x, pos.y, pos.z));
 
         // reset the force
         model->force = tyga::Vector3(0,0,0);
