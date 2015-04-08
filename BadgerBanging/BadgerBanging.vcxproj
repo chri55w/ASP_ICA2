@@ -96,20 +96,24 @@
   <ItemGroup>
     <ClInclude Include="Camera.hpp" />
     <ClInclude Include="MyDemo.hpp" />
-    <ClInclude Include="MyParticleCentre.h" />
+    <ClInclude Include="MyParticleEmmitter.h" />
+    <ClInclude Include="MyParticleManager.h" />
     <ClInclude Include="MyPhysicsCentre.hpp" />
     <ClInclude Include="MyUtils.hpp" />
     <ClInclude Include="Badger.hpp" />
     <ClInclude Include="ToyMine.hpp" />
+    <ClInclude Include="ToyParticle.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyDemo.cpp" />
-    <ClCompile Include="MyParticleCentre.cpp" />
+    <ClCompile Include="MyParticleEmmitter.cpp" />
+    <ClCompile Include="MyParticleManager.cpp" />
     <ClCompile Include="MyPhysicsCentre.cpp" />
     <ClCompile Include="MyUtils.cpp" />
     <ClCompile Include="ToyMine.cpp" />
+    <ClCompile Include="ToyParticle.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

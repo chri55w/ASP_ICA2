@@ -13,7 +13,7 @@
 #include <iostream>
 
 
-#include "MyParticleCentre.h"
+#include "MyParticleManager.h"
 
 const tyga::Vector3 MyDemo::MIN_BOUND = tyga::Vector3(-20, 0.3f, -10);
 const tyga::Vector3 MyDemo::MAX_BOUND = tyga::Vector3(20, 1.5f, 10);
@@ -40,7 +40,8 @@ void MyDemo::applicationDidStart() {
     renderer_ = std::make_shared<tyga::BasicRenderer>();
     tyga::Application::setWindowViewDelegate(renderer_);
 
-    tyga::Application::addRunloopTask(MyPhysicsCentre::defaultCentre());
+	tyga::Application::addRunloopTask(MyPhysicsCentre::defaultCentre());
+	tyga::Application::addRunloopTask(MyParticleManager::defaultCentre());
     tyga::Application::addRunloopTask(tyga::GraphicsCentre::defaultCentre());
     tyga::Application::addRunloopTask(tyga::ActorWorld::defaultWorld());
 

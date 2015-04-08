@@ -6,7 +6,7 @@
 #include <tyga/ActorWorld.hpp>
 #include <tyga/GraphicsCentre.hpp>
 #include <tyga/Log.hpp>
-#include "MyParticleCentre.h"
+#include "MyParticleManager.h"
 
 ToyMine::ToyMine() {
 }
@@ -34,15 +34,15 @@ void ToyMine::trigger() {
     // TODO: code to begin the explosion animation/simulation
     tyga::debugLog("ToyMine::trigger: toy should explode now");
 	triggered = true;
-	
-	auto toy_particles = std::make_shared<ToyParticle>();
-	toy_particles->addToWorld(tyga::ActorWorld::defaultWorld());
+	tyga::Vector3 position = this->physics_model_->position();
+	particleEmmitter->randTestEmit(position);
 }
 
 void ToyMine::actorDidEnterWorld(std::shared_ptr<tyga::Actor> actor) {
     auto world = tyga::ActorWorld::defaultWorld();
     auto graphics = tyga::GraphicsCentre::defaultCentre();
-    auto physics = MyPhysicsCentre::defaultCentre();
+	auto physics = MyPhysicsCentre::defaultCentre();
+	auto particles = MyParticleManager::defaultCentre();
 
     auto graphics_model = graphics->newModel();
     graphics_model->material = graphics->newMaterial();
@@ -57,6 +57,8 @@ void ToyMine::actorDidEnterWorld(std::shared_ptr<tyga::Actor> actor) {
     physics_model->radius = 0.25f;
     physics_model->mass = 1.f;
     physics_model_ = physics_model;
+
+	particleEmmitter = particles->newEmmitter();
 
     actor->attachComponent(graphics_model);
     actor->attachComponent(physics_model);

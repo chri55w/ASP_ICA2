@@ -2,6 +2,7 @@
 
 #include <tyga/ActorDelegate.hpp>
 #include "MyPhysicsCentre.hpp"
+#include "MyParticleEmmitter.h"
 
 class ToyMine : public tyga::ActorDelegate {
 	public:
@@ -25,5 +26,7 @@ class ToyMine : public tyga::ActorDelegate {
 		std::shared_ptr<PhysicsSphere> physics_model_;
 
 		bool triggered = false;
+
+		MyParticleEmmitter *particleEmmitter = nullptr;
 
 };

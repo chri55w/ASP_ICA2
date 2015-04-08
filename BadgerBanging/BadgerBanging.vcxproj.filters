@@ -36,7 +36,13 @@
     <ClInclude Include="Badger.hpp">
       <Filter>Packages</Filter>
     </ClInclude>
-    <ClInclude Include="MyParticleCentre.h">
+    <ClInclude Include="MyParticleManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MyParticleEmmitter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ToyParticle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -59,7 +65,13 @@
     <ClCompile Include="ToyMine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MyParticleCentre.cpp">
+    <ClCompile Include="MyParticleManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MyParticleEmmitter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ToyParticle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

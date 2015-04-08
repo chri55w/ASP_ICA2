@@ -1,27 +1,35 @@
-﻿Build started 08/04/2015 13:08:11.
-     1>Project "C:\Users\Chris\Desktop\ASP_ICA2\BadgerBanging\BadgerBanging.vcxproj" on node 2 (Build target(s)).
+﻿Build started 08/04/2015 18:30:22.
+     1>Project "C:\Users\n3035136\Desktop\ASP_ICA2\BadgerBanging\BadgerBanging.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I../external/include /ZI /nologo /W3 /WX- /Od /Oy- /D _USE_MATH_DEFINES /D WIN32 /D _DEBUG /D _CONSOLE /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt MyDemo.cpp ToyMine.cpp
-         ToyMine.cpp
-     1>c:\users\chris\desktop\asp_ica2\badgerbanging\myphysicscentre.hpp(78): warning C4305: 'argument' : truncation from 'double' to 'float'
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I../external/include /ZI /nologo /W3 /WX- /Od /Oy- /D _USE_MATH_DEFINES /D WIN32 /D _DEBUG /D _CONSOLE /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt MyDemo.cpp MyParticleEmmitter.cpp MyParticleManager.cpp ToyMine.cpp
          MyDemo.cpp
-     1>c:\users\chris\desktop\asp_ica2\badgerbanging\myphysicscentre.hpp(78): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\n3035136\desktop\asp_ica2\badgerbanging\myphysicscentre.hpp(78): warning C4305: 'argument' : truncation from 'double' to 'float'
          Generating Code...
+         Compiling...
+         MyParticleManager.cpp
+     1>c:\users\n3035136\desktop\asp_ica2\badgerbanging\myparticlemanager.cpp(41): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\n3035136\desktop\asp_ica2\badgerbanging\myparticlemanager.cpp(64): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+         Generating Code...
+         Skipping... (no relevant changes detected)
+         ToyMine.cpp
+         MyParticleEmmitter.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Chris\Desktop\ASP_ICA2\Debug\BadgerBanging.exe" /INCREMENTAL /NOLOGO /LIBPATH:..\external\lib\Win32\v120\Debug\ opengl32.lib "toybadger-mt-sgd.lib" glfw.lib libpng.lib zlib.lib "tsl-vc120-mt-sg.lib" "tcf-vc120-mt-sg.lib" "tyga-vc120-mt-sg.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Chris\Desktop\ASP_ICA2\Debug\BadgerBanging.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Chris\Desktop\ASP_ICA2\Debug\BadgerBanging.lib" /MACHINE:X86 Debug\Camera.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\n3035136\Desktop\ASP_ICA2\Debug\BadgerBanging.exe" /INCREMENTAL /NOLOGO /LIBPATH:..\external\lib\Win32\v120\Debug\ opengl32.lib "toybadger-mt-sgd.lib" glfw.lib libpng.lib zlib.lib "tsl-vc120-mt-sg.lib" "tcf-vc120-mt-sg.lib" "tyga-vc120-mt-sg.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\n3035136\Desktop\ASP_ICA2\Debug\BadgerBanging.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\n3035136\Desktop\ASP_ICA2\Debug\BadgerBanging.lib" /MACHINE:X86 Debug\Camera.obj
          Debug\main.obj
          Debug\MyDemo.obj
-         Debug\MyParticleCentre.obj
+         Debug\MyParticleEmmitter.obj
+         Debug\MyParticleManager.obj
          Debug\MyPhysicsCentre.obj
          Debug\MyUtils.obj
          Debug\ToyMine.obj
-         BadgerBanging.vcxproj -> C:\Users\Chris\Desktop\ASP_ICA2\Debug\BadgerBanging.exe
+         Debug\ToyParticle.obj
+         BadgerBanging.vcxproj -> C:\Users\n3035136\Desktop\ASP_ICA2\Debug\BadgerBanging.exe
        PostBuildEvent:
-         copy "C:\Users\Chris\Desktop\ASP_ICA2\Debug\BadgerBanging.exe" "C:\Users\Chris\Desktop\ASP_ICA2\demo\BadgerBanging.exe"
+         copy "C:\Users\n3035136\Desktop\ASP_ICA2\Debug\BadgerBanging.exe" "C:\Users\n3035136\Desktop\ASP_ICA2\demo\BadgerBanging.exe"
          :VCEnd
                  1 file(s) copied.
-     1>Done Building Project "C:\Users\Chris\Desktop\ASP_ICA2\BadgerBanging\BadgerBanging.vcxproj" (Build target(s)).
+     1>Done Building Project "C:\Users\n3035136\Desktop\ASP_ICA2\BadgerBanging\BadgerBanging.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:02.75
+Time Elapsed 00:00:02.09
