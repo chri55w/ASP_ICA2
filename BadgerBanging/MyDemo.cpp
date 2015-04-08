@@ -12,6 +12,9 @@
 #include <tyga/Math.hpp>
 #include <iostream>
 
+
+#include "MyParticleCentre.h"
+
 const tyga::Vector3 MyDemo::MIN_BOUND = tyga::Vector3(-20, 0.3f, -10);
 const tyga::Vector3 MyDemo::MAX_BOUND = tyga::Vector3(20, 1.5f, 10);
 
@@ -46,8 +49,12 @@ void MyDemo::applicationDidStart() {
 
     auto world = tyga::ActorWorld::defaultWorld();
     auto graphics = tyga::GraphicsCentre::defaultCentre();
-    auto physics = MyPhysicsCentre::defaultCentre();
+	auto physics = MyPhysicsCentre::defaultCentre();
+	//auto particles = MyParticleCentre::defaultCentre();
 
+
+	auto toy_particles = std::make_shared<ToyParticle>();
+	toy_particles->addToWorld(world);
 
     auto floor_mesh = graphics->newMeshWithIdentifier("cube");
     auto floor_material = graphics->newMaterial();

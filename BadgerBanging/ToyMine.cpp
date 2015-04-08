@@ -32,6 +32,8 @@ void ToyMine::applyForce(tyga::Vector3 force) {
 void ToyMine::trigger() {
     // TODO: code to begin the explosion animation/simulation
     tyga::debugLog("ToyMine::trigger: toy should explode now");
+	triggered = true;
+
 }
 
 void ToyMine::actorDidEnterWorld(std::shared_ptr<tyga::Actor> actor) {
@@ -66,4 +68,7 @@ void ToyMine::actorWillLeaveWorld(std::shared_ptr<tyga::Actor> actor) {
 void ToyMine::actorClockTick(std::shared_ptr<tyga::Actor> actor) {
     // HINT: once the toy has exploded and there is no visible traces left
     //       then call this->removeFromWorld() to free the memory
+	if (triggered) {
+		this->removeFromWorld();
+	}
 }

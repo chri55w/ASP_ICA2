@@ -24,4 +24,6 @@ class ToyMine : public tyga::ActorDelegate {
 
 		std::shared_ptr<PhysicsSphere> physics_model_;
 
+		bool triggered = false;
+
 };

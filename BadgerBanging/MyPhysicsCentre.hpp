@@ -47,21 +47,17 @@ class MyPhysicsCentre : public tyga::RunloopTaskProtocol {
 
 	public:
 
-	    static std::shared_ptr<MyPhysicsCentre>
-		defaultCentre();
+	    static std::shared_ptr<MyPhysicsCentre> defaultCentre();
 
 		MyPhysicsCentre();
 
 		~MyPhysicsCentre();
 
-		std::shared_ptr<PhysicsPlane>
-		newPlane();
+		std::shared_ptr<PhysicsPlane> newPlane();
 
-		std::shared_ptr<PhysicsSphere>
-		newSphere();
+		std::shared_ptr<PhysicsSphere> newSphere();
 
-		std::shared_ptr<PhysicsBox>
-		newBox();
+		std::shared_ptr<PhysicsBox> newBox();
 
 	private:
 

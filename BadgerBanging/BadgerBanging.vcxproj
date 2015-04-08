@@ -96,6 +96,7 @@
   <ItemGroup>
     <ClInclude Include="Camera.hpp" />
     <ClInclude Include="MyDemo.hpp" />
+    <ClInclude Include="MyParticleCentre.h" />
     <ClInclude Include="MyPhysicsCentre.hpp" />
     <ClInclude Include="MyUtils.hpp" />
     <ClInclude Include="Badger.hpp" />
@@ -105,6 +106,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyDemo.cpp" />
+    <ClCompile Include="MyParticleCentre.cpp" />
     <ClCompile Include="MyPhysicsCentre.cpp" />
     <ClCompile Include="MyUtils.cpp" />
     <ClCompile Include="ToyMine.cpp" />
