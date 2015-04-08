@@ -6,6 +6,7 @@
 #include <tyga/ActorWorld.hpp>
 #include <tyga/GraphicsCentre.hpp>
 #include <tyga/Log.hpp>
+#include "MyParticleCentre.h"
 
 ToyMine::ToyMine() {
 }
@@ -33,7 +34,9 @@ void ToyMine::trigger() {
     // TODO: code to begin the explosion animation/simulation
     tyga::debugLog("ToyMine::trigger: toy should explode now");
 	triggered = true;
-
+	
+	auto toy_particles = std::make_shared<ToyParticle>();
+	toy_particles->addToWorld(tyga::ActorWorld::defaultWorld());
 }
 
 void ToyMine::actorDidEnterWorld(std::shared_ptr<tyga::Actor> actor) {

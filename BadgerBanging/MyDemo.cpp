@@ -50,12 +50,7 @@ void MyDemo::applicationDidStart() {
     auto world = tyga::ActorWorld::defaultWorld();
     auto graphics = tyga::GraphicsCentre::defaultCentre();
 	auto physics = MyPhysicsCentre::defaultCentre();
-	//auto particles = MyParticleCentre::defaultCentre();
-
-
-	auto toy_particles = std::make_shared<ToyParticle>();
-	toy_particles->addToWorld(world);
-
+	
     auto floor_mesh = graphics->newMeshWithIdentifier("cube");
     auto floor_material = graphics->newMaterial();
     floor_material->colour = tyga::Vector3(0.9f, 0.9f, 0.25f);

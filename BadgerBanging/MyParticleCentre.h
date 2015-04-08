@@ -21,7 +21,7 @@ class MyParticleCentre : public tyga::GraphicsSpriteDelegate, public std::enable
 		int MAX_PARTICLES = 1000;
 		int LIVE_PARTICLES = 0;
 
-		void initialiseParticles(int numberOfParticles);
+		void initialiseParticles(int minParticles, int maxParticles, tyga::Vector3 origin);
 
 		void reapDeadParticles();
 
