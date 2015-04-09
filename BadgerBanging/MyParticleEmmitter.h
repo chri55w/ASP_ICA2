@@ -7,7 +7,7 @@ class MyParticleEmmitter : public tyga::ActorDelegate {
 		MyParticleEmmitter();
 		~MyParticleEmmitter();
 
-		void randTestEmit(tyga::Vector3 originPosition);
+		void randomEmmission(tyga::Vector3 origin, tyga::Vector3 baseColour, float forceModifier, int maxSize, float sizeVariation, int minParticles, int maxParticles, int maxLifeSpan, float lifeVariation);
 
 	private:
 

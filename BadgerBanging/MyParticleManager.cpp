@@ -57,15 +57,11 @@ void MyParticleManager::reapDeadParticles() {
 		}
 	}
 }
-void MyParticleManager::initialiseParticles(int minParticles, int maxParticles, tyga::Vector3 origin) {
+void MyParticleManager::initialiseParticle(ToyParticle newParticle) {
 	int index = LIVE_PARTICLES;
-	int particlesToCreate = (rand() % (maxParticles - minParticles)) + minParticles;
-	for (int i = 0; i < particlesToCreate; i++) {
-		tyga::Vector3 velocity = tyga::Vector3((rand() % 6) - 3, (rand() % 6) - 3, (rand() % 6) - 3);
-		float lifeSpan = 3;
-		particles[index] = ToyParticle(origin, velocity, tyga::Vector3(1, 1, 1), lifeSpan, lifeSpan, lifeSpan);
+	if (index < MAX_PARTICLES) {
+		particles[index] = newParticle;
 		LIVE_PARTICLES++;
-		index++;
 	}
 }
 

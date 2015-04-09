@@ -11,7 +11,7 @@ class MyParticleManager : public tyga::GraphicsSpriteDelegate, public std::enabl
 		
 		MyParticleEmmitter *newEmmitter();
 
-		void initialiseParticles(int minParticles, int maxParticles, tyga::Vector3 origin);
+		void initialiseParticle(ToyParticle newParticle);
 
 		void reapDeadParticles();
 
