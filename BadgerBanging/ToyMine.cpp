@@ -35,10 +35,9 @@ void ToyMine::trigger() {
     tyga::debugLog("ToyMine::trigger: toy should explode now");
 	triggered = true;
 	tyga::Vector3 position = this->physics_model_->position();
-	particleEmmitter->randomEmmission(position, tyga::Vector3(0.1, 0.1, 0.1), 1.2, 3, 1.5, 30, 60, 4, 0.75);
-	particleEmmitter->randomEmmission(position, tyga::Vector3(0.3, 0.3, 0.3), 1.0, 2, 1, 30, 60, 5, 0.65);
-	particleEmmitter->randomEmmission(position, tyga::Vector3(1.0, 0.1, 0.1), 2.5, 2, 0.75, 30, 50, 2, 0.7);
-	particleEmmitter->randomEmmission(position, tyga::Vector3(1.0, 0.5, 0.1), 4.2, 2, 0.75, 30, 50, 2, 0.9);
+	particleEmmitter->randomEmmission("Smoke", position, 10, 25);
+	particleEmmitter->randomEmmission("Fire", position, 25, 50);
+	particleEmmitter->randomEmmission("Debris", position, 3, 7);
 }
 
 void ToyMine::actorDidEnterWorld(std::shared_ptr<tyga::Actor> actor) {

@@ -7,6 +7,8 @@
 #include <tyga/GraphicsCentre.hpp>
 #include <tyga/Log.hpp>
 #include "MyParticleEmmitter.h"
+#include "MyParticleSystem.h"
+#include <iostream>
 
 
 std::shared_ptr<MyParticleManager> MyParticleManager::default_centre_;
@@ -38,7 +40,7 @@ int MyParticleManager::graphicsSpriteVertexCount() const {
 
 void MyParticleManager::graphicsSpriteGenerate(tyga::GraphicsSpriteVertex vertex_array[]) const {
 	// NB: you may need to adjust this if you want to control the sprite look
-	for (unsigned int i = 0; i < LIVE_PARTICLES; ++i) {
+	for (int i = 0; i < LIVE_PARTICLES; ++i) {
 		vertex_array[i].position = particles[i].getPosition();
 		vertex_array[i].size = particles[i].getSize();
 		vertex_array[i].colour = particles[i].getColour();
@@ -46,6 +48,22 @@ void MyParticleManager::graphicsSpriteGenerate(tyga::GraphicsSpriteVertex vertex
 		vertex_array[i].rotation = 0.f; // NB: has no effect in basic renderer
 	}
 }
+void MyParticleManager::runloopWillBegin() {
+
+}
+void MyParticleManager::runloopExecuteTask() {
+	updateParticles();
+
+	reapDeadParticles();
+
+	std::cout << "Particles: " + std::to_string(LIVE_PARTICLES) << std::endl;
+}
+
+void MyParticleManager::runloopDidEnd() {
+
+
+}
+
 void MyParticleManager::reapDeadParticles() {
 	int particleIndex = 0;
 	while (particleIndex < LIVE_PARTICLES) {
@@ -80,16 +98,57 @@ MyParticleEmmitter *MyParticleManager::newEmmitter() {
 	return newEmmitter;
 }
 
-void MyParticleManager::runloopWillBegin() {
-
+MyParticleSystem *MyParticleManager::getSystem(std::string systemName) {
+	std::unordered_map<std::string, MyParticleSystem*>::const_iterator system = particleSystems_.find(systemName);
+	if (system != particleSystems_.end()) {
+		return system->second;
+	} else {
+		return nullptr;
+	}
+	
 }
-void MyParticleManager::runloopExecuteTask() {
-	updateParticles();
-
-	reapDeadParticles();
+void MyParticleManager::addSystem(std::string systemName) {
+	std::unordered_map<std::string, MyParticleSystem*>::const_iterator system = particleSystems_.find(systemName);
+	if (system == particleSystems_.end()) {
+		//System is undeclared, create it now
+		particleSystems_[systemName] = new MyParticleSystem();
+	} else {
+		tyga::debugLog("System Re-Initialization Ignored: " + systemName);
+	}
 }
 
-void MyParticleManager::runloopDidEnd() {
+void MyParticleManager::setLifespan(std::string systemName, float minLifespan, float maxLifespan) {
+	std::unordered_map<std::string, MyParticleSystem*>::const_iterator system = particleSystems_.find(systemName);
+	if (system != particleSystems_.end()) {
+		particleSystems_[systemName]->setLifespan(minLifespan, maxLifespan);
+	} else {
+		tyga::debugLog("Null System Access Ignored: 'setLifespan' : " + systemName);
+	}
+}
 
+void MyParticleManager::setSize(std::string systemName, float startSize, float targetEndSize, float sizeRandomiser) {
+	std::unordered_map<std::string, MyParticleSystem*>::const_iterator system = particleSystems_.find(systemName);
+	if (system != particleSystems_.end()) {
+		particleSystems_[systemName]->setSize(startSize, targetEndSize, sizeRandomiser);
+	} else {
+		tyga::debugLog("Null System Access Ignored: 'setSize' : " + systemName);
+	}
+}
 
+void MyParticleManager::setForces(std::string systemName, float gravityModifier, tyga::Vector3 constantForce, float minAcceleration, float maxAcceleration, float accelerationFallOff) {
+	std::unordered_map<std::string, MyParticleSystem*>::const_iterator system = particleSystems_.find(systemName);
+	if (system != particleSystems_.end()) {
+		particleSystems_[systemName]->setForces(gravityModifier, constantForce, minAcceleration, maxAcceleration, accelerationFallOff);
+	} else {
+		tyga::debugLog("Null System Access Ignored: 'setForces' : " + systemName);
+	}
+}
+
+void MyParticleManager::setColours(std::string systemName, tyga::Vector3 baseColour, tyga::Vector3 colourVariation, float startAlpha, float endAlpha) {
+	std::unordered_map<std::string, MyParticleSystem*>::const_iterator system = particleSystems_.find(systemName);
+	if (system != particleSystems_.end()) {
+		particleSystems_[systemName]->setColours(baseColour, colourVariation, startAlpha, endAlpha);
+	} else {
+		tyga::debugLog("Null System Access Ignored: 'setColours' : " + systemName);
+	}
 }

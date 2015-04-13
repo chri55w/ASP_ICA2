@@ -2,7 +2,9 @@
 
 #include <tyga/GraphicsCentre.hpp>
 #include "ToyParticle.h"
+#include <unordered_map>
 
+class MyParticleSystem;
 class MyParticleEmmitter;
 
 class MyParticleManager : public tyga::GraphicsSpriteDelegate, public std::enable_shared_from_this<MyParticleManager>, public tyga::RunloopTaskProtocol {
@@ -17,6 +19,14 @@ class MyParticleManager : public tyga::GraphicsSpriteDelegate, public std::enabl
 
 		void updateParticles();
 
+		void addSystem(std::string systemName);
+		void setLifespan(std::string systemName, float minLifespan, float maxLifespan);
+		void setSize(std::string systemName, float startSize, float targetEndSize, float sizeRandomiser);
+		void setForces(std::string systemName, float gravityModifier, tyga::Vector3 constantForce, float minAcceleration, float maxAcceleration, float accelerationFallOff);
+		void setColours(std::string systemName, tyga::Vector3 baseColour, tyga::Vector3 colourVariation, float startAlpha, float endAlpha);
+
+		MyParticleSystem *getSystem(std::string systemName);
+
 		std::string graphicsSpriteTexture() const override;
 
 		int graphicsSpriteVertexCount() const override;
@@ -30,7 +40,7 @@ class MyParticleManager : public tyga::GraphicsSpriteDelegate, public std::enabl
 		void runloopDidEnd() override;
 
 	private:
-
+		/*OLD SYSTEM*/
 		void initialiseManager();
 
 		static std::shared_ptr<MyParticleManager> default_centre_;
@@ -40,5 +50,10 @@ class MyParticleManager : public tyga::GraphicsSpriteDelegate, public std::enabl
 
 		int MAX_PARTICLES = 10000;
 		int LIVE_PARTICLES = 0;
+
+		/*NEW SYSTEM*/
+
+		std::unordered_map<std::string, MyParticleSystem*> particleSystems_;
+
 };
 

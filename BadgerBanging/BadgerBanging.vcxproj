@@ -98,6 +98,7 @@
     <ClInclude Include="MyDemo.hpp" />
     <ClInclude Include="MyParticleEmmitter.h" />
     <ClInclude Include="MyParticleManager.h" />
+    <ClInclude Include="MyParticleSystem.h" />
     <ClInclude Include="MyPhysicsCentre.hpp" />
     <ClInclude Include="MyUtils.hpp" />
     <ClInclude Include="Badger.hpp" />
@@ -110,6 +111,7 @@
     <ClCompile Include="MyDemo.cpp" />
     <ClCompile Include="MyParticleEmmitter.cpp" />
     <ClCompile Include="MyParticleManager.cpp" />
+    <ClCompile Include="MyParticleSystem.cpp" />
     <ClCompile Include="MyPhysicsCentre.cpp" />
     <ClCompile Include="MyUtils.cpp" />
     <ClCompile Include="ToyMine.cpp" />

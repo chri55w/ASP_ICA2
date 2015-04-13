@@ -1,13 +1,14 @@
 #pragma once
 #include <tyga/ActorDelegate.hpp>
 #include <tyga/Math.hpp>
+#include <string>
 
 class MyParticleEmmitter : public tyga::ActorDelegate {
 	public:
 		MyParticleEmmitter();
 		~MyParticleEmmitter();
 
-		void randomEmmission(tyga::Vector3 origin, tyga::Vector3 baseColour, float forceModifier, int maxSize, float sizeVariation, int minParticles, int maxParticles, int maxLifeSpan, float lifeVariation);
+		void randomEmmission(std::string systemName, tyga::Vector3 origin, int minParticles, int maxParticles);
 
 	private:
 
