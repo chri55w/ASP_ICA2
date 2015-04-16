@@ -23,7 +23,7 @@ class MyParticleManager : public tyga::GraphicsSpriteDelegate, public std::enabl
 		void setLifespan(std::string systemName, float minLifespan, float maxLifespan);
 		void setSize(std::string systemName, float startSize, float targetEndSize, float sizeRandomiser);
 		void setForces(std::string systemName, float gravityModifier, tyga::Vector3 constantForce, float minAcceleration, float maxAcceleration, float accelerationFallOff);
-		void setColours(std::string systemName, tyga::Vector3 baseColour, tyga::Vector3 colourVariation, float startAlpha, float endAlpha);
+		void setColours(std::string systemName, tyga::Vector3 baseColour, tyga::Vector3 colourVariation, float startAlpha, float endAlpha, std::string textureName);
 
 		MyParticleSystem *getSystem(std::string systemName);
 

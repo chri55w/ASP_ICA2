@@ -27,11 +27,12 @@ class MyParticleSystem {
 																accelerationDiff_ = maxAcceleration - minAcceleration;
 																accelerationFallOff_ = accelerationFallOff;
 															   }
-		void setColours(tyga::Vector3 baseColour, tyga::Vector3 colourChannelVariance, float startAlpha, float endAlpha) {
+		void setColours(tyga::Vector3 baseColour, tyga::Vector3 colourChannelVariance, float startAlpha, float endAlpha, std::string textureName) {
 																colour_ = baseColour;
 																colourVariation_ = colourChannelVariance;
 																startAlpha_ = startAlpha;
 																endAlpha_ = endAlpha;
+																textureFile_ = textureName;
 															   }
 		float getRandLifespan();
 		float getStartSize() const { return startSize_; }
@@ -67,5 +68,6 @@ class MyParticleSystem {
 		tyga::Vector3 colourVariation_ = tyga::Vector3(0.0, 0.0, 0.0);
 		float startAlpha_ = 1.0;
 		float endAlpha_ = 0.0;
+		std::string textureFile_ = "tex01.png";
 };
 

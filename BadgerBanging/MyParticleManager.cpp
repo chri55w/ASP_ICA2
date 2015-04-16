@@ -144,10 +144,10 @@ void MyParticleManager::setForces(std::string systemName, float gravityModifier,
 	}
 }
 
-void MyParticleManager::setColours(std::string systemName, tyga::Vector3 baseColour, tyga::Vector3 colourVariation, float startAlpha, float endAlpha) {
+void MyParticleManager::setColours(std::string systemName, tyga::Vector3 baseColour, tyga::Vector3 colourVariation, float startAlpha, float endAlpha, std::string textureName) {
 	std::unordered_map<std::string, MyParticleSystem*>::const_iterator system = particleSystems_.find(systemName);
 	if (system != particleSystems_.end()) {
-		particleSystems_[systemName]->setColours(baseColour, colourVariation, startAlpha, endAlpha);
+		particleSystems_[systemName]->setColours(baseColour, colourVariation, startAlpha, endAlpha, textureName);
 	} else {
 		tyga::debugLog("Null System Access Ignored: 'setColours' : " + systemName);
 	}

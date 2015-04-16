@@ -86,19 +86,19 @@ void MyDemo::applicationDidStart() {
 	particles->setLifespan("Fire", 1.0, 1.75);
 	particles->setSize("Fire", 3.0, 0.0, 1.0);
 	particles->setForces("Fire", 0.0, tyga::Vector3(0.0, 0.6, 0.0), 6.0, 8.0, 0.7);
-	particles->setColours("Fire", tyga::Vector3(0.984, 0.58, 0.035), tyga::Vector3(0.05, 0.05, 0.035), 1.0, 0.0);
+	particles->setColours("Fire", tyga::Vector3(0.984, 0.58, 0.035), tyga::Vector3(0.05, 0.05, 0.035), 1.0, 0.0, "fire.png");
 
 	particles->addSystem("Smoke");
 	particles->setLifespan("Smoke", 4.0, 6.0);
 	particles->setSize("Smoke", 4.0, 1.0, 2.0);
 	particles->setForces("Smoke", 0.0, tyga::Vector3(0.0, 4.5, 0.0), 3.0, 4.0, 1.5);
-	particles->setColours("Smoke", tyga::Vector3(0.135, 0.135, 0.135), tyga::Vector3(0.15, 0.15, 0.15), 1.0, 0.0);
+	particles->setColours("Smoke", tyga::Vector3(0.135, 0.135, 0.135), tyga::Vector3(0.15, 0.15, 0.15), 1.0, 0.0, "smoke.png");
 
 	particles->addSystem("Debris");
 	particles->setLifespan("Debris", 25.0, 35.0);
 	particles->setSize("Debris", 1.0, 0.4, 0.0);
-	particles->setForces("Debris", 1.0, tyga::Vector3(0.0, 0.0, 0.0), 7.0, 12.0, 0.9);
-	particles->setColours("Debris", tyga::Vector3(0.005, 0.005, 0.005), tyga::Vector3(0.10, 0.10, 0.10), 1.0, 1.0);
+	particles->setForces("Debris", 1.0, tyga::Vector3(0.0, 0.0, 0.0), 15.0, 12.0, 0.9);
+	particles->setColours("Debris", tyga::Vector3(0.005, 0.005, 0.005), tyga::Vector3(0.10, 0.10, 0.10), 1.0, 1.0, "debris.png");
 
     resetToys();
 
